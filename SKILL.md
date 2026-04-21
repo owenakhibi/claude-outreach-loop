@@ -46,7 +46,7 @@ Visit the LinkedIn profile first and check:
 
 - **1st-degree connection?** → send DM directly, skip the connection step
 - **Already pending?** → skip sending, but update CRM to "Outreach Sent" if not already
-- **2nd/3rd-degree + enterprise C-suite** (F500, public-co CEO, President of Division)? → **blank connection request** (no note). 2026 data shows blank outperforms noted on acceptance rate (~45–68% vs ~28–45%) because notes trigger LinkedIn's "sales spam" pattern-match on heavy-inbox execs.
+- **2nd/3rd-degree + enterprise C-suite** (F500, public-co CEO, President of Division)? → **blank connection request** (no note). In our experience, blank outperforms noted on acceptance rate for heavy-inbox execs because notes often trigger LinkedIn's "sales spam" pattern-match. Calibrate to your own data.
 - **2nd/3rd-degree + founder / startup CEO / mid-market exec**? → **connection with a teaser note**. Curiosity-driven audience — a short note earns both the accept AND engagement.
 - **Job changed?** → flag it, consider retargeting. Stale primary contacts are the #1 data-rot problem.
 - **Connect button hidden?** → it's under the "More" dropdown. Common for high-follower accounts where LinkedIn makes Follow the primary action.

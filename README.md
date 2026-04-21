@@ -1,11 +1,13 @@
 # Claude Outreach Loop
 
+*A Claude Code skill that sends your LinkedIn touches and auto-logs them to Attio — one command.*
+
 <!-- Hero demo GIF: record the 45-60 sec silent screen cap, save as docs/demo.gif, then uncomment below -->
 <!-- <p align="center"><img src="docs/demo.gif" width="720" alt="Claude Outreach Loop demo"/></p> -->
 
 Tell Claude who to send LinkedIn messages to. It classifies each prospect, drafts in your voice, sends via the [Claude in Chrome](https://claude.ai/chrome) extension, and logs every touch in [Attio](https://attio.com) — in one command.
 
-Built for B2B operators sending 10–50 LinkedIn touches a week who are tired of dual-tracking between LinkedIn tabs and their CRM.
+Built for B2B operators sending 10–50 LinkedIn touches a week who are tired of dual-tracking between LinkedIn tabs and their CRM. The skill runs on your logged-in Chrome session, not a headless bot — you stay in control.
 
 ## What it does
 
@@ -22,13 +24,22 @@ Built for B2B operators sending 10–50 LinkedIn touches a week who are tired of
 - Prospect research (that's a separate lead-gen workflow)
 - Automated follow-up drips without human confirmation
 
+## Why not X?
+
+| If you're using… | What breaks | What this gives you |
+|---|---|---|
+| **Phantombuster / Dux-Soup** | server-side bots trip LinkedIn's detection in weeks; you can't tune the message voice | your real Chrome session + per-prospect classification + humanized drafts |
+| **Salesloft / Outreach** | built for email sequences, not LinkedIn-first partnership work; expensive | free, LinkedIn-native, Attio-first |
+| **Manual clicking + copy-paste to CRM** | works but kills 10+ minutes per batch; updates drift | Claude does both in one pass |
+| **A generic Claude Code agent with no skill** | re-explains context every session; voice drifts | pinned memory + trigger phrases + consistent behavior |
+
 ## Requirements
 
-- **Claude Code** (tested on Claude Opus 4.7)
-- **Claude in Chrome** extension, installed and signed in
+- **Claude Code** with Claude Opus 4.x or newer
+- **Claude in Chrome** extension, installed and signed in to LinkedIn
 - **Attio workspace** with API token access
-- **Python 3.9+** for helper scripts
-- **LinkedIn Premium or Sales Nav** (optional — only needed if you want InMail as Day 7 fallback)
+- **Python 3.9+** for the helper scripts
+- **LinkedIn Premium or Sales Navigator** — optional, only if you want InMail as the Day 7 fallback; the default 3-touch cadence doesn't need it
 
 ## Install
 
@@ -96,7 +107,11 @@ source ~/.config/claude-outreach-loop/.env && \
 
 Expected output: a list of discovered attributes, a STATUS vs SELECT warning if both exist, and `Wrote schema to ~/.config/claude-outreach-loop/schema.json`.
 
-It writes a `schema.json` and flags the critical gotcha: whether your Kanban groups by a `stage` SELECT or a `status` attribute. **Kanban updates must go to the STATUS field, not the SELECT field** — if you skip this, your Kanban won't move.
+The critical gotcha `setup.py` flags: whether your Kanban groups by a `status`-typed attribute or a `select`-typed one. **Kanban updates must go to the STATUS field, not the SELECT field** — if you skip this, your Kanban won't move.
+
+## Verify the skill loaded
+
+Restart Claude Code (or run `/skills` from within Claude Code) to confirm `claude-outreach-loop` appears in the skills list. Then try a dry-run trigger like `tell me what the outreach loop skill would do for a 2nd-degree founder target` to verify Claude picked up the memory files.
 
 ## Use
 
@@ -155,9 +170,9 @@ If any are missing, setup.py tells you which and you create them in Attio's UI f
 
 ## Acknowledgments
 
-Humanization rules borrow heavily from [blader/humanizer](https://github.com/blader/humanizer) — the most-starred Claude Code skill for removing AI writing tells. Install it alongside this skill for voice calibration:
+Humanization rules borrow heavily from [blader/humanizer](https://github.com/blader/humanizer) — the most-starred Claude Code skill for removing AI writing tells. **Optional** — install it alongside this skill if you want an additional voice-calibration pass before sending:
 ```bash
-git clone https://github.com/blader/humanizer.git ~/.claude/skills/humanizer
+git clone https://github.com/blader/humanizer.git ~/.claude/skills/humanizer/
 ```
 
 ## License

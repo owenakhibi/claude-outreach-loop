@@ -18,9 +18,6 @@ Every cold message must pass a humanization filter before sending. Goal: text th
 4. **Open with a specific fact, not a compliment.** "Saw your Q1 framing of AI as growth multiplier" > "I was impressed by your work." Compliments = #1 template signal.
 5. **Use contractions everywhere** — don't, you're, we're, I've, it's, we'd.
 6. **Kill tricolons** (X, Y, and Z patterns). Pick one.
-
-**Opener preference:** "Hey {Name}, I'm {{YOUR_NAME}}." — "Hey" over "Hi" feels warmer without being unprofessional. Always include self-introduction on cold messages since prospects don't know you.
-
 7. **Specific numbers, never round.** $47K not $50K. 3 pilots not "a few pilots." 500 hours not "lots of hours."
 8. **Name a specific recent thing only a human tracking the space would know** — "Before their YC demo day," "after SF AI Week last month."
 9. **Drop the sign-off flourish.** No "Best regards," "Looking forward to hearing from you," "I hope this finds you well." Use "— {{YOUR_FIRST_NAME}}" or just the name.
@@ -30,6 +27,10 @@ Every cold message must pass a humanization filter before sending. Goal: text th
 13. **Time-anchored CTA.** "15 min Thursday or Friday?" not "at your convenience."
 14. **Shortest usable company name.** Use nicknames over legal names when it reads natural.
 15. **Read aloud. If any sentence could live on LinkedIn, rewrite it.**
+
+### Opener preference
+
+"Hey {Name}, I'm {{YOUR_NAME}}." — "Hey" over "Hi" feels warmer without being unprofessional. Always include self-introduction on cold messages since prospects don't know you.
 
 ### Words/phrases to delete on sight
 
