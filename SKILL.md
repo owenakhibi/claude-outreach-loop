@@ -19,7 +19,7 @@ End-to-end LinkedIn + Attio workflow for Claude Code. Built for operators who se
 Copy `memory/*.md` into your Claude memory directory (`~/.claude/projects/<your-project>/memory/`) and **fill in the placeholders**:
 - `{{YOUR_NAME}}`, `{{YOUR_TITLE}}` — who signs the messages
 - `{{YOUR_COMPANY}}`, `{{YOUR_COMPANY_ONE_LINER}}` — what you tell prospects
-- `{{EXISTING_PARTNERS}}` — optional social proof you drop into messages
+- `{{EXISTING_PARTNERS_REFERENCE}}` — optional social proof you drop into messages
 
 Copy `.env.example` to `~/.config/claude-outreach-loop/.env` and fill in:
 - `ATTIO_API_KEY` (from Attio → Settings → Developers → Create token)

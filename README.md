@@ -47,7 +47,7 @@ Edit each memory file and replace the `{{PLACEHOLDER}}` fields with your values:
 - `{{YOUR_TITLE}}`
 - `{{YOUR_COMPANY}}` — public-facing company name
 - `{{YOUR_COMPANY_ONE_LINER}}` — ~10-word description
-- `{{EXISTING_PARTNERS}}` — optional social proof (delete the line if you have none yet)
+- `{{EXISTING_PARTNERS_REFERENCE}}` — optional social proof (delete the line if you have none yet)
 
 ## Configure
 
