@@ -1,8 +1,11 @@
 # Claude Outreach Loop
 
-A Claude Code skill that runs a LinkedIn → Attio outreach workflow end-to-end. You tell Claude who to reach out to; it classifies the prospect, drafts a message in your voice, sends it via the Claude in Chrome extension, and logs the touch in your Attio CRM.
+<!-- Hero demo GIF: record the 45-60 sec silent screen cap, save as docs/demo.gif, then uncomment below -->
+<!-- <p align="center"><img src="docs/demo.gif" width="720" alt="Claude Outreach Loop demo"/></p> -->
 
-Built for B2B partnerships operators who send 10–50 LinkedIn touches a week and want to stop dual-tracking between LinkedIn tabs and their CRM.
+Tell Claude who to send LinkedIn messages to. It classifies each prospect, drafts in your voice, sends via the [Claude in Chrome](https://claude.ai/chrome) extension, and logs every touch in [Attio](https://attio.com) — in one command.
+
+Built for B2B operators sending 10–50 LinkedIn touches a week who are tired of dual-tracking between LinkedIn tabs and their CRM.
 
 ## What it does
 
@@ -30,7 +33,7 @@ Built for B2B partnerships operators who send 10–50 LinkedIn touches a week an
 ## Install
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/claude-outreach-loop ~/.claude/skills/claude-outreach-loop
+git clone https://github.com/owenakhibi/claude-outreach-loop ~/.claude/skills/claude-outreach-loop
 ```
 
 Copy memory templates to your Claude project:
