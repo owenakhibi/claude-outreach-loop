@@ -4,10 +4,11 @@ description: >
   Run a LinkedIn → Attio outreach workflow end-to-end from Claude Code: classify
   a prospect, draft the right message in your voice, send it via the Claude in
   Chrome browser automation, and log the touch in your Attio CRM list. Use this
-  skill whenever you say "send connects to X", "reach out to X", "start the
-  outreach batch", "follow up with X", or anything that involves actually sending
-  LinkedIn messages and syncing CRM state. Also use when a prospect accepts a
-  connection or replies — the follow-up DM and CRM update flow live here too.
+  skill whenever the user says "send connects to X", "reach out to X", "start the
+  outreach batch", "follow up with X", "{name} accepted send the DM", "{name}
+  replied log it", or anything that involves actually sending LinkedIn messages
+  and syncing CRM state. Also use when a prospect accepts a connection or replies
+  — the follow-up DM and CRM update flow live here too.
 ---
 
 # Claude Outreach Loop
@@ -16,10 +17,12 @@ End-to-end LinkedIn + Attio workflow for Claude Code. Built for operators who se
 
 ## Before you use this skill — one-time setup
 
-Copy `memory/*.md` into your Claude memory directory (`~/.claude/projects/<your-project>/memory/`) and **fill in the placeholders**:
-- `{{YOUR_NAME}}`, `{{YOUR_TITLE}}` — who signs the messages
+Copy the template memory files (all except `MEMORY.md` — merge that index by hand) into your Claude Code project memory directory: `~/.claude/projects/<your-project>/memory/`. The `<your-project>` folder name is what Claude Code uses for your project — check `ls ~/.claude/projects/` to find it.
+
+Then **fill in the placeholders** in each copied file:
+- `{{YOUR_NAME}}`, `{{YOUR_FIRST_NAME}}`, `{{YOUR_TITLE}}` — who signs the messages
 - `{{YOUR_COMPANY}}`, `{{YOUR_COMPANY_ONE_LINER}}` — what you tell prospects
-- `{{EXISTING_PARTNERS_REFERENCE}}` — optional social proof you drop into messages
+- `{{EXISTING_PARTNERS_REFERENCE}}` — optional social proof you drop into messages (delete references if you have none yet)
 
 Copy `.env.example` to `~/.config/claude-outreach-loop/.env` and fill in:
 - `ATTIO_API_KEY` (from Attio → Settings → Developers → Create token)
@@ -130,16 +133,17 @@ See `memory/humanization_rules.md` for the full list and reasoning.
 
 **The #1 bug to avoid:** Attio lists can have BOTH a `stage` SELECT field AND a `to_research` STATUS field that look identical but behave differently in Kanban views. **Kanban groups by the STATUS field.** If your updates don't appear on the Kanban, you're probably writing to the SELECT field instead of the STATUS field. Check your list's attribute definitions.
 
-**Patch pattern for a send:**
+**Payload shape for a send (illustrative — use `scripts/attio_client.py`'s `update_list_entry` for the actual call):**
 ```python
+# Sent as the body of PATCH /v2/lists/{list_id}/entries/{entry_id}
 patch = {"data": {"entry_values": {
-    "to_research": "Outreach Sent",        # string value works for status type
+    "to_research": "Outreach Sent",        # STATUS type: bare string title
     "attempt_number": [{"value": attempt}],
     "last_touch": [{"value": today_iso}],
     "next_followup_due": [{"value": today_plus_3_iso}],
 }}}
-# PATCH /v2/lists/{list_id}/entries/{entry_id}
 ```
+Note: the actual status attribute slug depends on your list — `setup.py` discovers it and writes it to `schema.json`. The client reads from there; don't hardcode `to_research` in your own adapters.
 
 **Recommended status values (adapt to your list):**
 - "To Research" (default initial)
@@ -167,8 +171,9 @@ patch = {"data": {"entry_values": {
 
 ### 5. Log a Note on the Person record for every send
 
-Every LinkedIn touch should produce a note on the person's record:
+Every LinkedIn touch should produce a note on the person's record. Use `attio_client.create_note(...)` in `scripts/attio_client.py` — the payload shape below is illustrative:
 ```python
+# Sent as the body of POST /v2/notes
 note_body = {"data": {
     "parent_object": "people",
     "parent_record_id": person_record_id,
@@ -176,7 +181,6 @@ note_body = {"data": {
     "format": "plaintext",
     "content": f"Sent on {today}:\n\n{message_text}\n\nNext follow-up: {next_due}"
 }}
-# POST /v2/notes
 ```
 
 This keeps message history discoverable on the Person without cluttering the list entry.

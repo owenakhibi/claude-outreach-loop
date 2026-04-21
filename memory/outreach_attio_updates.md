@@ -9,14 +9,14 @@ After every outbound touch (cold email, LinkedIn InMail, Twitter DM, warm intro 
 **Why:** Keeping Attio as source of truth for outreach state without manually clicking fields. Dual-tracking (send + update) kills momentum when you're doing 10+ touches a day.
 
 **How to apply:** When you say "sent the LI to {name}" or "just emailed {name}," update the relevant list entry:
-- Set `Last Touch` = today's date
-- Increment `Attempt #` by 1
-- Set `Next Follow-up Due` = today + 3 days for touches 1–2, or clear it for touch 3 (final)
-- Update `Stage` — first send moves to "Outreach Sent" (or equivalent post-Reaching-Out stage)
-- Update `Channel` if not already set
+- Set `last_touch` = today's date
+- Increment `attempt_number` by 1
+- Set `next_followup_due` = today + 3 days for touches 1–2, or clear it for touch 3 (final)
+- Update the pipeline status attribute (your Kanban's STATUS field — commonly slugged `to_research`, `pipeline_stage`, or similar; see the CRITICAL gotcha below) — first send moves to "Outreach Sent"
+- Update `channel` if not already set
 
-If a reply comes in, move Stage to "Replied / In Convo" and set Closed Reason blank.
-If ghosted after touch 3, move to Closed with reason "Ghosted". If explicit no, Closed / "Passed".
+If a reply comes in, move the status to "In conversation" / "Replied" and clear the `closed_reason`.
+If ghosted after touch 3, move to "Closed" with `closed_reason` = "Ghosted". If explicit no, use "Passed".
 
 ---
 

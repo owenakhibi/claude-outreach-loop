@@ -21,11 +21,10 @@ LinkedIn outreach follows a connection-first approach, not InMail-first. InMail 
 - Curiosity-driven, reward specificity
 - Note earns both the accept AND higher post-accept reply rate
 
-**Cadence:**
-- **Day 0:** Send connection (blank or noted per segment)
-- **Day 2–3 (after accept):** DM with the actual pitch
-- **Day 5 (accepted but no reply):** Short follow-up DM with new angle or asset
-- **Day 7 (not accepted):** Switch channel — InMail if Premium, or email fallback
+**Cadence (aligns with the 3-touch Day 0/3/7 rule in `outreach_cadence.md`):**
+- **Day 0 (Touch 1):** Send connection (blank or noted per segment). If 1st-degree, send the DM directly.
+- **Day 3 (Touch 2, after accept):** Post-accept DM with the actual pitch. Bump Attempt # in CRM.
+- **Day 7 (Touch 3, final):** If still no reply, send the close-out DM — redirect ask or "circle back next quarter." If the connection never accepted, switch channel (InMail if Premium, or email fallback).
 
 **InMail rules when used as fallback:**
 - One shot, make it count
